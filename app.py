@@ -76,4 +76,4 @@ def index():
     return render_template('index.html', category=category, news_items=news_items, page=page, total_pages=total_pages, request=request, no_results=no_results)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0")
