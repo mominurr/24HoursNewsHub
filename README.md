@@ -1,6 +1,6 @@
 # 24HoursNewsHub
 
-A Flask-based web application that scrapes and displays news articles from top news websites, categorized and updated every 24 hours. The UI is built with HTML, CSS, and Bootstrap 5 for a modern, responsive experience.
+A Flask-based web application that scrapes and displays news articles from top news websites and updated every hour. The UI is built with HTML, CSS, and Bootstrap 5 for a modern, responsive experience.
 
 ## Features
 - Scrapes news from multiple sources (Bangla & English)
