@@ -32,7 +32,7 @@ A Flask-based web application that scrapes and displays news articles from top n
 ## Setup & Usage
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/mominurr/24HoursNewsHub.git
    cd 24HoursNewsHub
    ```
 2. **Install dependencies**
