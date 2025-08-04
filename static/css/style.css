@@ -1,0 +1,71 @@
+.custom-footer a {
+    transition: color 0.2s, transform 0.2s;
+}
+.custom-footer a:hover {
+    color: #ffd600 !important;
+    transform: scale(1.2);
+}
+.custom-navbar .nav-link {
+    transition: color 0.2s, background 0.2s;
+}
+.custom-navbar .nav-link:hover {
+    color: #ffd600 !important;
+    background: rgba(255,214,0,0.08);
+    border-radius: 6px;
+}
+/* Professional deep indigo for navbar and footer */
+.bg-indigo {
+    background-color: #23235b !important;
+}
+.custom-navbar {
+    border-bottom: 2px solid #181845;
+}
+.custom-footer {
+    border-top: 2px solid #181845;
+}
+.custom-navbar .navbar-brand img {
+    background: #fff;
+    border-radius: 50%;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(35,35,91,0.15);
+    border: 2px solid #e3e3e3;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+}
+.custom-navbar .nav-link.active,
+.custom-navbar .nav-link:focus,
+.custom-navbar .nav-link:hover {
+    color: #ffd600 !important;
+}
+body { background-color: #f8f9fa; }
+/* Hero section with open-source background image */
+/* Hero section with open-source background image */
+/* url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') */
+.hero-section {
+    background: url(../img/bakcground.png) no-repeat center center;
+    background-size: cover;
+    min-height: 400px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-title {
+    background: rgba(0,0,0,0.5);
+    padding: 30px 60px;
+    border-radius: 16px;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    margin: 0 auto;
+    text-align: center;
+}
+footer a { text-decoration: underline; }

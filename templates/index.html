@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24HoursNewsHub | Trusted 24/7 News from Bangladesh & Around the World</title>
+    <meta name="description"
+        content="Stay informed with real-time news in Bangla & English. Explore national, international, tech, and sports updates — 24/7. Built by Mominur Rahman.">
+    <meta name="keywords"
+        content="Bangladesh news, Bangla news, 24 hour news, real-time updates, sports, tech, world news, mominur rahman">
+    <meta name="author" content="Mominur Rahman">
+    <link rel="shortcut icon" type="image/png" href="../static/logo/download_2.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <!-- Navbar at the top with logo -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-indigo custom-navbar">
+        <div class="container-fluid">
+            <a class="d-flex align-items-center gap-2" href="/">
+                <img src="../static/logo/logo.svg" alt="Logo" width="160" height="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/?category=bangla_news">Bangla News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?category=english_news">English News</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="/?category=world">World News</a></li> -->
+                    <!-- <li class="nav-item"><a class="nav-link" href="/?category=sports">Sports</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?category=science_tech">Science & Technology</a></li> -->
+                    <!-- <li class="nav-item"><a class="nav-link" href="/?category=others">Others</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section with Open-Source Background Image and Business Name -->
+    <div class="hero-section d-flex justify-content-center align-items-center">
+        <!-- <h1 class="display-4 fw-bold text-white hero-title">24HoursNewsHub</h1> -->
+    </div>
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h2>{{ category.replace('_', ' ').title() }}</h2>
+        <!-- Search form -->
+        <form class="mb-4" method="get" action="/">
+            <div class="input-group">
+                <input type="hidden" name="category" value="{{ category }}">
+                <input type="text" class="form-control" name="search" placeholder="Search news..."
+                    value="{{ request.args.get('search', '') }}">
+                <button class="btn btn-warning" type="submit">Search</button>
+            </div>
+        </form>
+        <!-- News list will go here -->
+        <div id="news-list">
+            {% if news_items %}
+            <ul class="list-group mb-4">
+                {% for title, published_date, source_url, upload_date, image_url in news_items %}
+                <li class="list-group-item d-flex align-items-center gap-3">
+                    <img src="{{ image_url if image_url else url_for('static', filename='img/no_img.png') }}"
+                        alt="News Image" width="80" height="60" class="rounded shadow-sm">
+                    <div>
+                        <h5><a href="{{ source_url }}" target="_blank" style="text-decoration: none;">{{ title }}</a>
+                        </h5>
+                        <small>Published: {{ published_date }} | Uploaded: {{ upload_date }}</small>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% elif no_results %}
+            <div class="alert alert-warning">No news found matching your search.</div>
+            {% else %}
+            <p>No news found for this category.</p>
+            {% endif %}
+        </div>
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if total_pages > 1 %}
+                {% set start_page = page-2 if page-2 > 1 else 1 %}
+                {% set end_page = page+2 if page+2 < total_pages else total_pages %} {% if page> 1 %}
+                    <li class="page-item"><a class="page-link"
+                            href="/?category={{ category }}&page={{ page - 1 }}">Previous</a></li>
+                    {% endif %}
+                    {% if start_page > 1 %}
+                    <li class="page-item"><a class="page-link" href="/?category={{ category }}&page=1">1</a></li>
+                    {% if start_page > 2 %}<li class="page-item disabled"><span class="page-link">...</span></li>{%
+                    endif %}
+                    {% endif %}
+                    {% for p in range(start_page, end_page + 1) %}
+                    <li class="page-item {% if p == page %}active{% endif %}"><a class="page-link"
+                            href="/?category={{ category }}&page={{ p }}">{{ p }}</a></li>
+                    {% endfor %}
+                    {% if end_page < total_pages %} {% if end_page < total_pages - 1 %}<li class="page-item disabled">
+                        <span class="page-link">...</span></li>{% endif %}
+                        <li class="page-item"><a class="page-link"
+                                href="/?category={{ category }}&page={{ total_pages }}">{{ total_pages }}</a></li>
+                        {% endif %}
+                        {% if page < total_pages %} <li class="page-item"><a class="page-link"
+                                href="/?category={{ category }}&page={{ page + 1 }}">Next</a></li>
+                            {% endif %}
+                            {% else %}
+                            <li class="page-item disabled"><span class="page-link">No more pages</span></li>
+                            {% endif %}
+            </ul>
+        </nav>
+        <!-- About Section -->
+        <section class="mt-5">
+            <h4>About this site</h4>
+            <p>This site aggregates news from top sources using web scraping. Only articles from the last 24 hours are
+                shown, categorized for easy browsing. Scraping is done using Python scripts and the data is stored
+                locally.</p>
+        </section>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-indigo text-white text-center py-3 mt-5 custom-footer">
+        <div>Developed by Mominur Rahman</div>
+        <div class="mt-2 mb-5">
+            <a href="https://github.com/mominurr" target="_blank" class="text-white mx-2" title="GitHub"><i
+                    class="bi bi-github fs-4"></i></a>
+            <a href="https://www.linkedin.com/in/mominur--rahman/" target="_blank" class="text-white mx-2"
+                title="LinkedIn"><i class="bi bi-linkedin fs-4"></i></a>
+            <a href="https://www.facebook.com/mominurr518" target="_blank" class="text-white mx-2" title="Facebook"><i
+                    class="bi bi-facebook fs-4"></i></a>
+            <a href="https://x.com/mominur_rahma_n" target="_blank" class="text-white mx-2" title="Twitter"><i
+                    class="bi bi-twitter fs-4"></i></a>
+            <a href="https://mominurr.github.io/" target="_blank" class="text-white mx-2" title="Portfolio"><i
+                    class="bi bi-globe fs-4"></i></a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
