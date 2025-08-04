@@ -16,7 +16,7 @@ A Flask-based web application that scrapes and displays news articles from top n
 
 ## 🚩 Demo
 
-### [Live Website](https://your-live-site-url.com)
+### [Live Website](https://two4hoursnewshub.onrender.com)
 
 ![Homepage Screenshot](static/screenshots/screenshot_1.png)
 ![News List Screenshot](static/screenshots/screenshot_2.png)
@@ -37,7 +37,7 @@ A Flask-based web application that scrapes and displays news articles from top n
    ```
 2. **Install dependencies**
    ```bash
-   pip install flask beautifulsoup4 curl_cffi python-dateutil
+   pip install -r requirements.txt
    ```
 3. **Scrape news and populate the database**
    ```bash
@@ -55,14 +55,11 @@ A Flask-based web application that scrapes and displays news articles from top n
 - Edit `templates/index.html` and `static/css/style.css` for UI changes.
 - Update footer links in `index.html` for your own social/portfolio URLs.
 
-## Credits
-Developed by Mominur Rahman
-
 ## 📜 License
 This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
 
 ## 🛠️ Contributions
-We welcome contributions! Feel free to fork the repository and submit a pull request.
+Contributions are welcome! Feel free to fork the repo and submit a pull request.
 
 ## 📩 Contact
 For any inquiries or collaborations:
