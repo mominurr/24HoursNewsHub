@@ -23,26 +23,7 @@
 .custom-footer {
     border-top: 2px solid #181845;
 }
-.custom-navbar .navbar-brand img {
-    background: #fff;
-    border-radius: 50%;
-    padding: 8px;
-    box-shadow: 0 2px 8px rgba(35,35,91,0.15);
-    border: 2px solid #e3e3e3;
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-}
-.custom-navbar .navbar-brand,
-.custom-navbar .nav-link {
-    color: #fff !important;
-    font-weight: 500;
-}
-.custom-navbar .nav-link.active,
-.custom-navbar .nav-link:focus,
-.custom-navbar .nav-link:hover {
-    color: #ffd600 !important;
-}
+
 body { background-color: #f8f9fa; }
 /* Hero section with open-source background image */
 /* Hero section with open-source background image */
